@@ -1,0 +1,52 @@
+group 'lt.tendo.mm'
+version '0.1.0'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.4.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+
+mainClassName = "lt.tendo.mm.server.Application"
+
+task wrapper(type: Wrapper){
+    gradleVersion = '3.2.1'
+}
+
+jar {
+    baseName = 'oauth-test'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/libs-release" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.40'
+    compile("org.springframework.security.oauth:spring-security-oauth2")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    compile("org.springframework:spring-jdbc")
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
