@@ -30,6 +30,12 @@ and use access token like this:
 $ curl -X POST http://localhost:8090/greeting  -H "Authorization: Bearer 5fd3b58d-5d99-4a4e-bde4-2ac7cc7c8337"
 ```
 
+expected result:
+
+```
+{"id":1,"content":"Hello, 38068887730!"}
+```
+
 ###  InMemoryTokenStore usage:
 
 for InMemoryTokenStore usage, change to this:
@@ -40,10 +46,4 @@ for InMemoryTokenStore usage, change to this:
 			return new InMemoryTokenStore();
 			// return new JdbcTokenStore(dataSource);
 		}
-```
-
-expected result:
-
-```
-{"id":1,"content":"Hello, 38068887730!"}
 ```
